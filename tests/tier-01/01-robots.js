@@ -59,7 +59,7 @@ describe('Tier One: Robots', () => {
 
     // This test is interested in the unconnected AllRobots component. It is
     // exported as a named export in app/components/AllRobots.js
-    xit('renders the robots passed in as props', () => {
+    it('renders the robots passed in as props', () => {
       const wrapper = mount(
         <UnconnectedAllRobots robots={robots} getRobots={getRobotsSpy} />
       );
@@ -74,7 +74,7 @@ describe('Tier One: Robots', () => {
       ]);
     });
 
-    xit('renders DIFFERENT robots passed in as props', () => {
+    it('renders DIFFERENT robots passed in as props', () => {
       const differentRobots = [
         {
           id: 3,
@@ -112,7 +112,7 @@ describe('Tier One: Robots', () => {
     // In a later step, we'll create a thunk, and map that thunk to AllRobots
     // as getRobots. For right now, we just need to be sure the component
     // calls it after it mounts.
-    xit('calls this.props.getRobots after mount', async () => {
+    it('calls this.props.getRobots after mount', async () => {
       mount(<UnconnectedAllRobots robots={robots} getRobots={getRobotsSpy} />);
       await waitForExpect(() => {
         expect(getRobotsSpy).to.have.been.called;
@@ -126,14 +126,14 @@ describe('Tier One: Robots', () => {
       fakeStore = mockStore(initialState);
     });
     describe('set/fetch robots', () => {
-      xit('setRobots action creator', () => {
+      it('setRobots action creator', () => {
         expect(setRobots(robots)).to.deep.equal({
           type: 'SET_ROBOTS',
           robots,
         });
       });
 
-      xit('fetchRobots thunk creator returns a thunk that GETs /api/robots', async () => {
+      it('fetchRobots thunk creator returns a thunk that GETs /api/robots', async () => {
         await fakeStore.dispatch(fetchRobots());
         const [getRequest] = mockAxios.history.get;
         expect(getRequest).to.not.equal(undefined);
@@ -157,7 +157,7 @@ describe('Tier One: Robots', () => {
         throw new Error('replace this error with your own test');
       });
 
-      xit('reduces on SET_ROBOTS action', () => {
+      it('reduces on SET_ROBOTS action', () => {
         const action = { type: 'SET_ROBOTS', robots };
 
         const prevState = testStore.getState();
@@ -174,7 +174,7 @@ describe('Tier One: Robots', () => {
     // This test is expecting your component to dispatch a thunk after it mounts
     // Remember that getRobots prop from an earlier test? Now's a good time
     // for a mapDispatch.
-    xit('initializes robots from the server when the application loads the /robots route', async () => {
+    it('initializes robots from the server when the application loads the /robots route', async () => {
       const reduxStateBeforeMount = store.getState();
       expect(reduxStateBeforeMount.robots).to.deep.equal([]);
       mount(
@@ -192,7 +192,7 @@ describe('Tier One: Robots', () => {
 
     // This test is expecting your component to render the robots from the
     // Redux store. Now's a good time for a mapState.
-    xit('<AllRobots /> renders robots from the Redux store', async () => {
+    it('<AllRobots /> renders robots from the Redux store', async () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={['/robots']}>
@@ -223,7 +223,7 @@ describe('Tier One: Robots', () => {
 
     // This test expects that you've set up a Route for AllRobots.
     // You should take a look at app/components/Routes.js
-    xit('renders <AllRobots /> at /robots', () => {
+    it('renders <AllRobots /> at /robots', () => {
       const wrapper = mount(
         <Provider store={store}>
           <MemoryRouter initialEntries={['/robots']}>
@@ -255,7 +255,7 @@ describe('Tier One: Robots', () => {
 
     // Consider writing your GET route in server/api/robots.js. And don't
     // forget to apply the express router to your API in server/api/index.js!
-    xit('GET /api/robots responds with all robots', async () => {
+    it('GET /api/robots responds with all robots', async () => {
       const response = await agent.get('/api/robots').expect(200);
       expect(response.body).to.deep.equal(robots);
       expect(Robot.findAll.calledOnce).to.be.equal(true);
@@ -275,7 +275,7 @@ describe('Tier One: Robots', () => {
     });
     afterEach(() => db.sync({ force: true }));
 
-    xit('has fields name, imageUrl, fuelType, fuelLevel', async () => {
+    it('has fields name, imageUrl, fuelType, fuelLevel', async () => {
       robot.notARealAttribute = 'does not compute';
       const savedRobot = await Robot.create(robot);
       expect(savedRobot.name).to.equal('R2-D2');
@@ -289,7 +289,7 @@ describe('Tier One: Robots', () => {
       throw new Error('replace this error with your own test');
     });
 
-    xit('fuelType can only be gas, diesel, or electric (defaults to electric)', async () => {
+    it('fuelType can only be gas, diesel, or electric (defaults to electric)', async () => {
       robot.fuelType = 'the power of love';
       try {
         const badFuelRobot = await Robot.create(robot);
@@ -304,7 +304,7 @@ describe('Tier One: Robots', () => {
       expect(defaultFuelRobot.fuelType).to.equal('electric');
     });
 
-    xit('fuelLevel must be between 0 and 100 (defaults to 100)', async () => {
+    it('fuelLevel must be between 0 and 100 (defaults to 100)', async () => {
       robot.fuelLevel = -10;
       try {
         const negativeFuelRobot = await Robot.create(robot);
@@ -336,7 +336,7 @@ describe('Tier One: Robots', () => {
     // command line.
     beforeEach(seed);
 
-    xit('populates the database with at least three robots', async () => {
+    it('populates the database with at least three robots', async () => {
       const seedRobots = await Robot.findAll();
       expect(seedRobots).to.have.lengthOf.at.least(3);
     });

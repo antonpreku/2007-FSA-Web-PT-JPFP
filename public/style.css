@@ -9,11 +9,172 @@
 }
 
 body {
-  background: linear-gradient(#ffffff, #c0c0c0);
+  background: rgb(224, 224, 224);
   height: 100vh;
   padding: 0;
   margin: 0;
   width: 100vw;
+}
+.homeBtn{
+  text-decoration: none;
+  color: white;
+}
+.robotBtn{
+  padding-right: 1rem;
+  text-decoration: none;
+  color: white;
+}
+.projectBtn{
+  padding-left: 1rem;
+  text-decoration: none;
+  color: white;
+}
+.rightBtn {
+  text-decoration: none;
+  color: white;
+  align-items: center;
+  justify-content: space-around;
+
+}
+.topBar{
+  justify-content: space-around;
+  align-items: center;
+  display: flex;
+}
+.newRobot > form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.newRobot > form > label{
+  padding: 1rem;
+  font-size: 2rem;
+}
+.newRobot > form > input{
+  margin-bottom: 1rem;
+  width: 20rem;
+  height: 2.5rem;
+}
+.allRobots{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+.addRobotBtn{
+  color: white;
+  background: rgb(70, 160, 219);
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+}
+.robot{
+  background: #c0c0c0;
+  border: solid black 1px;
+  margin: 1rem;
+  padding: 1rem;
+  width: calc((100% / 2) - 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.project{
+  background: #c0c0c0;
+  border: solid black 1px;
+  margin: 1rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.project > img{
+  margin-right: 1rem;
+  border: solid black 1px;
+  width: 9rem;
+  height: 10rem;
+}
+.neccesary{
+  border-color: red;
+}
+.editProject{
+  background: #c0c0c0;
+  border: solid black 1px;
+  margin: 1rem;
+  padding: 1rem;
+  width: calc(100% - 5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#oneRobot{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#robotProject{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+}
+.singleRobot{
+  background: #c0c0c0;
+  border: solid black 1px;
+  margin: 1rem;
+  padding: 1rem;
+  width: calc(100%  - 20rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 3rem;
+}
+.singleRobot > div > a > button{
+  padding: 0 2rem 0 2rem;
+  font-size: 1rem;
+  background: rgb(61, 151, 61);
+}
+#editNewProject{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#editNewProject > select{
+  margin-right: 3rem;
+  width: 30%;
+  height: 2rem;
+
+}
+#h{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.singleRobot > img{
+  margin-right: 1rem;
+  border: solid black 1px;
+  width: 50%;
+  height: 10rem;
+}
+.edit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.edit > form {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+.edit > form >input{
+  margin: 1rem;
+  height: 2rem;
+  width: 15rem;
+}
+.edit > form >select{
+  margin: 1rem;
+  height: 2rem;
+  width: 15rem;
 }
 
 nav {
@@ -23,6 +184,8 @@ nav {
   display: flex;
   height: 80px;
   padding: 10px;
+  text-decoration: none;
+  justify-content: space-around;
 }
 
 main {
@@ -30,4 +193,25 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+.robotName > button{
+  padding: 0 1rem 0 1rem;
+  background: indianred;
+  display: flex;
+  align-items: flex-end;
+}
+.robot >img{
+  margin-right: 1rem;
+  border: solid black 1px;
+  width: 60%;
+  height: 100% ;
+}
+.robot > a{
+  margin-right: 1rem;
+  width: 60%;
+  height: 60% 
+}
+.edit >button{
+  background: skyblue;
+  align-items: flex-end;
 }

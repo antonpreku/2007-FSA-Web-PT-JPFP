@@ -8,7 +8,7 @@ describe('Tier One: Project >-< Robot Association', () => {
   afterEach(() => db.sync({ force: true }));
 
   describe('Sequelize Models', () => {
-    xit('a project may belong to many robots', async () => {
+    it('a project may belong to many robots', async () => {
       const r2d2 = await Robot.create({ name: 'R2-D2' });
       const wallE = await Robot.create({ name: 'WALL-E' });
       const projectLove = await Project.create({ title: 'Discover love' });
@@ -19,7 +19,7 @@ describe('Tier One: Project >-< Robot Association', () => {
       expect(lovingRobots).to.deep.equal(['R2-D2', 'WALL-E']);
     });
 
-    xit('a robot may belong to many projects', async () => {
+    it('a robot may belong to many projects', async () => {
       const openPodBayDoors = await Project.create({
         title: 'Open the pod bay doors',
       });
@@ -44,14 +44,14 @@ describe('Tier One: Project >-< Robot Association', () => {
       projects = await Project.findAll({ include: [Robot] });
     });
 
-    xit('creates at least one robot that has no projects', () => {
+    it('creates at least one robot that has no projects', () => {
       const robotsWithNoProjects = robots
         .filter((robot) => !robot.projects.length)
         .map((robot) => robot.name);
       expect(robotsWithNoProjects).to.have.lengthOf.above(0);
     });
 
-    xit('creates at least one project that has no robots', () => {
+    it('creates at least one project that has no robots', () => {
       const projectsWithNoRobots = projects
         .filter((project) => !project.robots.length)
         .map((project) => project.title);
